@@ -4,10 +4,11 @@ import { cores } from "../../styles";
 export const Card = styled.div`
   margin-top: 80px;
   position: relative;
+  border: 1px solid ${cores.coral};
+  width: 472px;
 `;
 
 export const TextBox = styled.div`
-  width: 456px;
   padding: 8px;
 
   div {
@@ -42,21 +43,26 @@ export const Descricao = styled.p`
   margin: 16px 0 16px;
 `;
 
-export const BotaoLink = styled.a`
+export const BotaoLink = styled.button`
   width: 82px;
   height: 24px;
   font-size: 14px;
   font-weight: bold;
-  text-decoration: none;
+  border: none;
   color: ${cores.creme};
   background-color: ${cores.coral};
   padding: 4px 6px;
+  cursor: pointer;
+
+  &:hover{
+    opacity: 0.9;
+  }
 `;
 
 export const Infos = styled.div`
-display: flex;
-gap: 8px;
-position: absolute;
-top: 16px;
-right: 50px;
-`
+  display: flex;
+  gap: 8px;
+  position: absolute;
+  top: 16px;
+  right: 50px;
+`;

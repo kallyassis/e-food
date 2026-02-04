@@ -9,6 +9,7 @@ import {
   Titulo,
 } from "./styles";
 import Tag from "../Tag";
+import { useNavigate } from "react-router-dom";
 
 type Props = {
   image: string;
@@ -20,6 +21,7 @@ type Props = {
 };
 
 const Produto = ({ description, image, infos, rating, title, star }: Props) => {
+  const navigate = useNavigate();
   return (
     <>
       <div className="container">
@@ -39,7 +41,9 @@ const Produto = ({ description, image, infos, rating, title, star }: Props) => {
               ))}
             </Infos>
             <Descricao>{description}</Descricao>
-            <BotaoLink href="#">Saiba mais</BotaoLink>
+            <BotaoLink onClick={() => navigate("/perfil")}>
+              Saiba mais
+            </BotaoLink>
           </TextBox>
         </Card>
       </div>
