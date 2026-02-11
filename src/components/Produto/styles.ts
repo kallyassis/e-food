@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import estrela from "../../assets/star.svg";
 import { cores } from "../../styles";
 
 export const Card = styled.div`
@@ -6,11 +7,18 @@ export const Card = styled.div`
   position: relative;
   border: 1px solid ${cores.coral};
   width: 472px;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 217px;
+    object-fit: cover;
+  }
 `;
 
 export const TextBox = styled.div`
   padding: 8px;
-
+  height: auto;
   div {
     display: flex;
     align-items: center;
@@ -31,7 +39,9 @@ export const Rating = styled.span`
   padding-right: 8px;
 `;
 
-export const Star = styled.img`
+export const Star = styled.div`
+  background-image: url(${estrela});
+  background-repeat: no-repeat;
   width: 21px;
   height: 21px;
 `;
@@ -54,7 +64,7 @@ export const BotaoLink = styled.button`
   padding: 4px 6px;
   cursor: pointer;
 
-  &:hover{
+  &:hover {
     opacity: 0.9;
   }
 `;

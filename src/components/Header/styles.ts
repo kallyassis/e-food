@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { cores } from "../../styles";
 
@@ -23,4 +24,8 @@ export const NavList = styled.li`
 
 export const Image = styled.img`
   width: 100%;
+`;
+
+export const Linnk = styled(Link)`
+  text-decoration: none;
 `;

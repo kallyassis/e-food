@@ -10,38 +10,35 @@ import {
 } from "./styles";
 import Tag from "../Tag";
 import { useNavigate } from "react-router-dom";
+import { Food } from "../../Pages/Home";
 
-type Props = {
-  image: string;
-  star: string;
-  title: string;
-  rating: string;
-  infos: string[];
-  description: string;
-};
-
-const Produto = ({ description, image, infos, rating, title, star }: Props) => {
+const Produto = ({ avaliacao, capa, descricao, tipo, titulo, id }: Food) => {
   const navigate = useNavigate();
+
+  const getDescricao = (descricao: string) => {
+    if (descricao.length > 250) {
+      return descricao.slice(0, 248) + "...";
+    }
+    return descricao;
+  };
   return (
     <>
       <div className="container">
-        <Card>
-          <img src={image} alt="" />
+        <Card key={id}>
+          <img src={capa} alt="" />
           <TextBox>
             <div>
-              <Titulo>{title}</Titulo>
+              <Titulo>{titulo}</Titulo>
               <div>
-                <Rating>{rating}</Rating>
-                <Star src={star} alt="Estrela" />
+                <Rating>{avaliacao}</Rating>
+                <Star />
               </div>
             </div>
             <Infos>
-              {infos.map((infor) => (
-                <Tag key={infor}>{infor}</Tag>
-              ))}
+              <Tag>{tipo}</Tag>
             </Infos>
-            <Descricao>{description}</Descricao>
-            <BotaoLink onClick={() => navigate("/perfil")}>
+            <Descricao>{getDescricao(descricao)}</Descricao>
+            <BotaoLink onClick={() => navigate(`/perfil/${id}`)}>
               Saiba mais
             </BotaoLink>
           </TextBox>

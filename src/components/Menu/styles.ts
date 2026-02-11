@@ -29,4 +29,5 @@ export const Button = styled.button`
   font-weight: bold;
   color: ${cores.coral};
   border: none;
+  cursor: pointer;
 `
