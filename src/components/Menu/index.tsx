@@ -4,13 +4,14 @@ type Props = {
   foto: string;
   titulo: string;
   descricao: string;
+  onClick: () => void;
 };
 
-const Menu = ({ descricao, foto, titulo }: Props) => {
+const Menu = ({ descricao, foto, titulo, onClick }: Props) => {
   return (
     <>
       <div className="container">
-        <Card>
+        <Card onClick={onClick}>
           <img src={foto} alt="" />
           <div>
             <Titulo>{titulo}</Titulo>
