@@ -22,6 +22,10 @@ export const Modal = styled.div`
   display: flex;
   align-items: center;
 
+  &.visible {
+    display: flex;
+  }
+
   .overlay {
     position: absolute;
     top: 0;
@@ -34,19 +38,24 @@ export const Modal = styled.div`
 
 export const ModaContent = styled.div`
   max-width: 1024px;
+  height: 310px;
   display: flex;
-  height: 344px;
   padding: 32px;
   background-color: ${cores.coral};
   width: 100%;
   position: relative;
   z-index: 1;
+
+  div {
+    max-width: 280px;
+    margin-right: 24px;
+  }
 `;
 
 export const Image = styled.img`
-  width: 280px;
-  height: 280px;
-  margin-right: 24px;
+  display: block;
+  height: 240px;
+  width: 100%;
 `;
 
 export const Close = styled.img`
@@ -66,14 +75,15 @@ export const Content = styled.div`
   p {
     font-size: 14px;
     line-height: 22px;
-    margin: 16px 0;
+    margin: 16px 0 40px 0;
+    width: 640px;
   }
 `;
 
 export const Button = styled.button`
   width: 218px;
   padding: 4px 6px;
-  margin-top: 16px;
+  margin-top: 30px;
   font-size: 14px;
   color: ${cores.coral};
   border: none;

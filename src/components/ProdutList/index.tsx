@@ -1,21 +1,15 @@
-import { useEffect, useState } from "react";
-import { Food } from "../../Pages/Home";
 import Produto from "../Produto";
 import { Container, List } from "./styles";
 
-export type Props = {
-  pratos: Food[];
-};
+import { useGetRestaurantFoodQuery } from "../../Services/index";
 
 const ProdutList = () => {
-  const [pratos, setPratos] = useState<Food[]>([])
+  const { data: pratos, isLoading } = useGetRestaurantFoodQuery();
 
-  useEffect(() => {
-      fetch("https://api-ebac.vercel.app/api/efood/restaurantes")
-        .then((res) => res.json())
-        .then((res) => setPratos(res));
-    }, []);
-  
+  if (!pratos) {
+    return <h3 className="container">Carregando...</h3>;
+  }
+
   return (
     <>
       <Container>

@@ -10,24 +10,20 @@ import {
   Modal,
 } from "./styles";
 import close from "../../assets/close.png";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { CardapioItem } from "../../Pages/Home";
 import { useParams } from "react-router-dom";
 
+import { useGetRestaurantByIDQuery } from "../../Services/index";
+
 const MenuList = () => {
   const { id } = useParams();
-  const [produto, setProduto] = useState<CardapioItem[]>([]);
+  const { data: produto, isLoading } = useGetRestaurantByIDQuery(id!);
+
   const [itemSelecionado, setItemSelecionado] = useState<CardapioItem | null>(
     null,
   );
-
-  useEffect(() => {
-    if (!id) return;
-    fetch(`https://api-ebac.vercel.app/api/efood/restaurantes/${id}`)
-      .then((res) => res.json())
-      .then((data) => setProduto(data.cardapio));
-  }, [id]);
 
   const getDescricao = (descricao: string) => {
     if (descricao.length > 200) {
@@ -43,12 +39,16 @@ const MenuList = () => {
     }).format(preco);
   };
 
+  if (!produto) {
+    return <h3 className="container">Caregando...</h3>;
+  }
+
   return (
     <>
       <Container>
         <div className="container">
           <List>
-            {produto.map((item) => (
+            {produto.cardapio.map((item) => (
               <Menu
                 key={item.id}
                 foto={item.foto}
@@ -65,12 +65,16 @@ const MenuList = () => {
       {itemSelecionado && (
         <Modal>
           <ModaContent className="container">
-            <Image src={itemSelecionado.foto} alt="Imagem da media" />
+            <div>
+              <Image src={itemSelecionado.foto} alt="Imagem da media" />
+            </div>
             <Content>
               <h4>{itemSelecionado.nome}</h4>
               <p>{itemSelecionado.descricao}</p>
-              <span>{itemSelecionado.porcao}</span>
-              <Button>{formatPreco(itemSelecionado.preco)}</Button>
+              <span>Serve de {itemSelecionado.porcao}</span>
+              <Button>
+                Adicionar ao carrinho - {formatPreco(itemSelecionado.preco)}
+              </Button>
             </Content>
             <Close
               src={close}
