@@ -1,4 +1,3 @@
-import pizza from "../../assets/pizza.png";
 import {
   ButtonCart,
   CartContaner,

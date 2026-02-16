@@ -4,7 +4,7 @@ import { Container, List } from "./styles";
 import { useGetRestaurantFoodQuery } from "../../Services/index";
 
 const ProdutList = () => {
-  const { data: pratos, isLoading } = useGetRestaurantFoodQuery();
+  const { data: pratos } = useGetRestaurantFoodQuery();
 
   if (!pratos) {
     return <h3 className="container">Carregando...</h3>;

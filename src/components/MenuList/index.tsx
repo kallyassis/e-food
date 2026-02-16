@@ -27,7 +27,7 @@ export const formatPreco = (preco: number) => {
 const MenuList = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const { data: produto, isLoading } = useGetRestaurantByIDQuery(id!);
+  const { data: produto } = useGetRestaurantByIDQuery(id!);
 
   const [itemSelecionado, setItemSelecionado] = useState<CardapioItem | null>(
     null,

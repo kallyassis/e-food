@@ -2,7 +2,7 @@ import { BoxUl, Container, Image, Linnk, NavList } from "./styles";
 import logo from "../../assets/logo.svg";
 import apresentacao from "../../assets/apresentacao.png";
 
-import { add, open } from "../../Store/reducer/Cart";
+import { open } from "../../Store/reducer/Cart";
 import { useDispatch, useSelector } from "react-redux";
 import { RootReducer } from "../../Store";
 
