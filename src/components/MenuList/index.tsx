@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { useParams } from "react-router-dom";
 import Menu from "../Menu";
 import {
   Button,
@@ -9,34 +11,40 @@ import {
   ModaContent,
   Modal,
 } from "./styles";
-import close from "../../assets/close.png";
-import { useState } from "react";
-
-import { CardapioItem } from "../../Pages/Home";
-import { useParams } from "react-router-dom";
-
 import { useGetRestaurantByIDQuery } from "../../Services/index";
+import close from "../../assets/close.png";
+import { CardapioItem } from "../../Pages/Home";
+import { add, open } from "../../Store/reducer/Cart";
+import { useDispatch } from "react-redux";
+
+export const formatPreco = (preco: number) => {
+  return new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  }).format(preco);
+};
 
 const MenuList = () => {
   const { id } = useParams();
+  const dispatch = useDispatch();
   const { data: produto, isLoading } = useGetRestaurantByIDQuery(id!);
 
   const [itemSelecionado, setItemSelecionado] = useState<CardapioItem | null>(
     null,
   );
 
+  const addToCart = () => {
+    if (!itemSelecionado) return;
+
+    dispatch(add(itemSelecionado));
+    dispatch(open());
+  };
+
   const getDescricao = (descricao: string) => {
     if (descricao.length > 200) {
       return descricao.slice(0, 197) + "...";
     }
     return descricao;
-  };
-
-  const formatPreco = (preco: number) => {
-    return new Intl.NumberFormat("pt-BR", {
-      style: "currency",
-      currency: "BRL",
-    }).format(preco);
   };
 
   if (!produto) {
@@ -72,7 +80,7 @@ const MenuList = () => {
               <h4>{itemSelecionado.nome}</h4>
               <p>{itemSelecionado.descricao}</p>
               <span>Serve de {itemSelecionado.porcao}</span>
-              <Button>
+              <Button onClick={addToCart}>
                 Adicionar ao carrinho - {formatPreco(itemSelecionado.preco)}
               </Button>
             </Content>

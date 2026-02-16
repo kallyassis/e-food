@@ -2,7 +2,17 @@ import { BoxUl, Container, Image, Linnk, NavList } from "./styles";
 import logo from "../../assets/logo.svg";
 import apresentacao from "../../assets/apresentacao.png";
 
+import { add, open } from "../../Store/reducer/Cart";
+import { useDispatch, useSelector } from "react-redux";
+import { RootReducer } from "../../Store";
+
 const Header = () => {
+  const { items } = useSelector((state: RootReducer) => state.cart);
+  const dispatch = useDispatch();
+
+  const openCart = () => {
+    dispatch(open());
+  };
   return (
     <>
       <Container>
@@ -15,7 +25,9 @@ const Header = () => {
               <li>
                 <img src={logo} alt="logo" />
               </li>
-              <NavList>0 produto(s) no carrinho</NavList>
+              <NavList onClick={openCart}>
+                {items.length} produto(s) no carrinho
+              </NavList>
             </BoxUl>
           </nav>
         </div>

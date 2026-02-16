@@ -20,6 +20,7 @@ export const NavList = styled.li`
   font-size: 18px;
   color: ${cores.coral};
   font-weight: bold;
+  cursor: pointer;
 `;
 
 export const Image = styled.img`

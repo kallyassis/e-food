@@ -5,6 +5,7 @@ import { GlobalStyles } from "./styles";
 import Rotas from "./routes";
 import Footer from "./components/Footer";
 import { store } from "./Store";
+import Cart from "./components/Cart";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <GlobalStyles />
         <Rotas />
         <Footer />
+        <Cart />
       </BrowserRouter>
     </Provider>
   );
