@@ -1,7 +1,7 @@
 import { useFormik } from "formik";
 import * as YUP from "yup";
 import { useDispatch, useSelector } from "react-redux";
-import  {  InputMask  }  from  '@react-input/mask' ;
+import { InputMask } from "@react-input/mask";
 
 import { RootReducer } from "../../Store";
 import { setOrderId } from "../../Store/reducer/Cart";
@@ -11,7 +11,6 @@ import FormatPrice from "../../utils";
 
 import Card from "../../components/Card";
 import { BoxInput, Button, GrupInput, SmallBoxInput } from "./styles";
-
 
 const Payment = () => {
   const dispatch = useDispatch();
@@ -36,9 +35,10 @@ const Payment = () => {
     validationSchema: YUP.object({
       nameOwner: YUP.string()
         .min(5, "Nome muito curto")
-        .required("Campo obrigatóri"),
+        .required("Campo obrigatório"),
       cardNumber: YUP.string()
-        .max(19, "Cartão inválido")
+        .min(16, "O número do cartão deve conter 16 caracteres")
+        .max(16, "Cartão inválido")
         .required("Campo obrigatório"),
       cvv: YUP.string()
         .max(3, "Código do cartão inválido")
@@ -117,7 +117,7 @@ const Payment = () => {
                   onChange={form.handleChange}
                   onBlur={form.handleBlur}
                   value={form.values.cardNumber}
-                  mask="9999 9999 9999 9999 "
+                  mask="9999999999999999 "
                   replacement={{ 9: /\d/ }}
                 />
                 <small>

@@ -9,7 +9,7 @@ interface ImageProps {
 }
 
 export const Container = styled.header`
-  padding: 64px 0 64px;
+  padding: 64px 0 0;
   background-image: url(${fundo});
 `;
 
@@ -28,15 +28,19 @@ export const NavList = styled.li`
 `;
 
 export const Image = styled.div<ImageProps>`
-  max-width: 1800px;
   width: 100%;
   height: 300px;
   position: relative;
+  margin-top: 65px;
 
   background-image: url(${(props) => props.$background});
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+
+  .container {
+    position: relative;
+  }
 `;
 
 export const Linnk = styled(Link)`

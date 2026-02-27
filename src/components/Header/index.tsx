@@ -47,14 +47,12 @@ const Header = () => {
             </BoxUl>
           </nav>
         </div>
-      </Container>
-      <Box>
-
+        <Box>
           <TextType>{restaurante.tipo}</TextType>
           <NameRestaurant>{restaurante.titulo}</NameRestaurant>
-
-        <Image $background={restaurante?.capa} />
-      </Box>
+          <Image $background={restaurante?.capa} />
+        </Box>
+      </Container>
     </>
   );
 };

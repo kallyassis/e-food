@@ -50,19 +50,17 @@ const MenuList = () => {
       <Container>
         <div className="container">
           <List>
-            {produto.cardapio.map(
-              (item: CardapioItem) => (
-                <Menu
-                  key={item.id}
-                  foto={item.foto}
-                  titulo={item.nome}
-                  descricao={getDescricao(item.descricao)}
-                  onClick={() => {
-                    setItemSelecionado(item);
-                  }}
-                />
-              ),
-            )}
+            {produto.cardapio.map((item: CardapioItem) => (
+              <Menu
+                key={item.id}
+                foto={item.foto}
+                titulo={item.nome}
+                descricao={getDescricao(item.descricao)}
+                onClick={() => {
+                  setItemSelecionado(item);
+                }}
+              />
+            ))}
           </List>
         </div>
       </Container>

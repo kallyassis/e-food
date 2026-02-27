@@ -30,7 +30,8 @@ const Checkout = () => {
       address: Yup.string().required("Campo obrigatório"),
       city: Yup.string().required("Campo obrigatório"),
       zipCode: Yup.string()
-        .max(9, "CEP invalido")
+        .min(9, "O CEP deve conter 8 caracteres")
+        .max(9, "CEP inválido")
         .required("Campo obrigatório"),
       houseNumber: Yup.string().required("Campo obrigatório"),
       complement: Yup.string(),
