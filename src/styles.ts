@@ -1,9 +1,9 @@
 import { createGlobalStyle } from "styled-components";
 
-export const cores = {
-  creme: "#FFF8F2",
+export const colors = {
+  cream: "#FFF8F2",
   coral: "#E66767",
-  bege: "#FFEBD9",
+  beige: "#FFEBD9",
 };
 
 export const GlobalStyles = createGlobalStyle`
@@ -15,7 +15,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body{
-    background-color: ${cores.creme};
+    background-color: ${colors.cream};
     
     .container{
       max-width: 1024px;

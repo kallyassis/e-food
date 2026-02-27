@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Key, useState } from "react";
 import { useParams } from "react-router-dom";
 import Menu from "../Menu";
 import {
@@ -13,16 +13,10 @@ import {
 } from "./styles";
 import { useGetRestaurantByIDQuery } from "../../Services/index";
 import close from "../../assets/close.png";
-import { CardapioItem } from "../../Pages/Home";
 import { add, open } from "../../Store/reducer/Cart";
 import { useDispatch } from "react-redux";
-
-export const formatPreco = (preco: number) => {
-  return new Intl.NumberFormat("pt-BR", {
-    style: "currency",
-    currency: "BRL",
-  }).format(preco);
-};
+import Loader from "../Loader";
+import FormatPrice from "../../utils";
 
 const MenuList = () => {
   const { id } = useParams();
@@ -48,7 +42,7 @@ const MenuList = () => {
   };
 
   if (!produto) {
-    return <h3 className="container">Caregando...</h3>;
+    return <Loader />;
   }
 
   return (
@@ -56,17 +50,19 @@ const MenuList = () => {
       <Container>
         <div className="container">
           <List>
-            {produto.cardapio.map((item) => (
-              <Menu
-                key={item.id}
-                foto={item.foto}
-                titulo={item.nome}
-                descricao={getDescricao(item.descricao)}
-                onClick={() => {
-                  setItemSelecionado(item);
-                }}
-              />
-            ))}
+            {produto.cardapio.map(
+              (item: CardapioItem) => (
+                <Menu
+                  key={item.id}
+                  foto={item.foto}
+                  titulo={item.nome}
+                  descricao={getDescricao(item.descricao)}
+                  onClick={() => {
+                    setItemSelecionado(item);
+                  }}
+                />
+              ),
+            )}
           </List>
         </div>
       </Container>
@@ -80,8 +76,13 @@ const MenuList = () => {
               <h4>{itemSelecionado.nome}</h4>
               <p>{itemSelecionado.descricao}</p>
               <span>Serve de {itemSelecionado.porcao}</span>
-              <Button onClick={addToCart}>
-                Adicionar ao carrinho - {formatPreco(itemSelecionado.preco)}
+              <Button
+                onClick={() => {
+                  addToCart();
+                  setItemSelecionado(null);
+                }}
+              >
+                Adicionar ao carrinho - {FormatPrice(itemSelecionado.preco)}
               </Button>
             </Content>
             <Close

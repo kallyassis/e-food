@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import fundo from "../../assets/fundo.png";
-import { cores } from "../../styles";
+import { colors } from "../../styles";
 
 export const Container = styled.header`
   height: 384px;
@@ -20,7 +20,7 @@ right: 450px;
 `
 
 export const TextoInicial = styled.p`
-  color: ${cores.coral};
+  color: ${colors.coral};
   font-size: 36px;
   font-weight: bold;
   width: 539px;

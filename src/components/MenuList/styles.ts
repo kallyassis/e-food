@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { cores } from "../../styles";
+import { colors } from "../../styles";
 
 export const Container = styled.div`
   padding: 56px 0;
@@ -21,6 +21,7 @@ export const Modal = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
+  z-index: 1;
 
   &.visible {
     display: flex;
@@ -41,7 +42,7 @@ export const ModaContent = styled.div`
   height: 310px;
   display: flex;
   padding: 32px;
-  background-color: ${cores.coral};
+  background-color: ${colors.coral};
   width: 100%;
   position: relative;
   z-index: 1;
@@ -70,7 +71,7 @@ export const Close = styled.img`
 export const Content = styled.div`
   display: flex;
   flex-direction: column;
-  color: ${cores.creme};
+  color: ${colors.cream};
 
   p {
     font-size: 14px;
@@ -85,7 +86,7 @@ export const Button = styled.button`
   padding: 4px 6px;
   margin-top: 30px;
   font-size: 14px;
-  color: ${cores.coral};
+  color: ${colors.coral};
   border: none;
   cursor: pointer;
   font-weight: bold;

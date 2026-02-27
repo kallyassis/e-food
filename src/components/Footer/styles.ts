@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { cores } from "../../styles";
+import { colors } from "../../styles";
 
 export const Rodape = styled.footer`
-  background-color: ${cores.bege};
+  background-color: ${colors.beige};
   padding-top: 40px;
 `;
 
@@ -13,7 +13,7 @@ export const Container = styled.div`
   justify-content: center;
 
   p {
-    color: ${cores.coral};
+    color: ${colors.coral};
     width: 470px;
     font-size: 10px;
     text-align: center;

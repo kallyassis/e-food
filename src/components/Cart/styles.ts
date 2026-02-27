@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { cores } from "../../styles";
+import { colors } from "../../styles";
 
 export const Overlay = styled.div`
   position: absolute;
@@ -29,13 +29,13 @@ export const CartContaner = styled.div`
 export const SideBar = styled.aside`
   max-width: 360px;
   width: 100%;
-  background-color: ${cores.coral};
+  background-color: ${colors.coral};
   padding: 32px 8px 0 8px;
   z-index: 1;
 
-  p {
+  > p {
     padding-top: 40px;
-    color: ${cores.creme};
+    color: ${colors.cream};
     font-weight: bold;
     font-size: 14px;
     margin-bottom: 16px;
@@ -48,19 +48,19 @@ export const SideBar = styled.aside`
 
 export const CartItem = styled.li`
   display: flex;
-  background-color: ${cores.creme};
+  background-color: ${colors.cream};
   padding: 8px 8px 12px;
   margin-bottom: 16px;
   position: relative;
 
   h3 {
     font-size: 18px;
-    color: ${cores.coral};
+    color: ${colors.coral};
     margin-bottom: 16px;
   }
 
   span {
-    color: ${cores.coral};
+    color: ${colors.coral};
     font-size: 14px;
   }
 `;
@@ -87,7 +87,17 @@ export const ButtonCart = styled.button`
   font-size: 14px;
   padding: 4px 0;
   font-weight: bold;
-  color: ${cores.coral};
+  color: ${colors.coral};
   border: none;
   cursor: pointer;
+`;
+
+export const ErrorMessege = styled.p`
+  background-color: ${colors.cream};
+  color: ${colors.coral};
+  padding: 8px;
+  margin: 8px 0;
+  border-radius: 4px;
+  font-size: 14px;
+  text-align: center;
 `;

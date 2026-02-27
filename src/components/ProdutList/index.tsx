@@ -2,12 +2,13 @@ import Produto from "../Produto";
 import { Container, List } from "./styles";
 
 import { useGetRestaurantFoodQuery } from "../../Services/index";
+import Loader from "../Loader";
 
 const ProdutList = () => {
   const { data: pratos } = useGetRestaurantFoodQuery();
 
   if (!pratos) {
-    return <h3 className="container">Carregando...</h3>;
+    return <Loader />;
   }
 
   return (
@@ -17,6 +18,7 @@ const ProdutList = () => {
           <List>
             {pratos.map((food) => (
               <Produto
+                key={food.id}
                 capa={food.capa}
                 descricao={food.descricao}
                 destacado={food.destacado}

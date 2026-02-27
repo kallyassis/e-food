@@ -1,22 +1,30 @@
-import { Provider } from "react-redux";
+import { useSelector } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 
 import { GlobalStyles } from "./styles";
 import Rotas from "./routes";
 import Footer from "./components/Footer";
-import { store } from "./Store";
+import { RootReducer } from "./Store";
 import Cart from "./components/Cart";
+import Checkout from "./Pages/Checkout";
+import Payment from "./Pages/Pagamento";
+import Order from "./Pages/Order";
 
 function App() {
+  const { isOpenCheckout, isOpenPayment, isOpenOrder } = useSelector(
+    (state: RootReducer) => state.cart,
+  );
   return (
-    <Provider store={store}>
-      <BrowserRouter>
-        <GlobalStyles />
-        <Rotas />
-        <Footer />
-        <Cart />
-      </BrowserRouter>
-    </Provider>
+    <BrowserRouter>
+      <GlobalStyles />
+      <Rotas />
+      <Footer />
+      <Cart />
+
+      {isOpenCheckout && <Checkout />}
+      {isOpenPayment && <Payment />}
+      {isOpenOrder && <Order />}
+    </BrowserRouter>
   );
 }
 

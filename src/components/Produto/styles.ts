@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import estrela from "../../assets/star.svg";
-import { cores } from "../../styles";
+import { colors } from "../../styles";
 
 export const Card = styled.div`
   margin-top: 80px;
   position: relative;
-  border: 1px solid ${cores.coral};
+  border: 1px solid ${colors.coral};
   width: 472px;
 
   img {
@@ -27,13 +27,13 @@ export const TextBox = styled.div`
 `;
 
 export const Titulo = styled.h3`
-  color: ${cores.coral};
+  color: ${colors.coral};
   font-size: 18px;
   margin-top: 8px;
 `;
 
 export const Rating = styled.span`
-  color: ${cores.coral};
+  color: ${colors.coral};
   font-size: 18px;
   font-weight: bold;
   padding-right: 8px;
@@ -47,7 +47,7 @@ export const Star = styled.div`
 `;
 
 export const Descricao = styled.p`
-  color: ${cores.coral};
+  color: ${colors.coral};
   font-size: 14px;
   line-height: 22px;
   margin: 16px 0 16px;
@@ -59,8 +59,8 @@ export const BotaoLink = styled.button`
   font-size: 14px;
   font-weight: bold;
   border: none;
-  color: ${cores.creme};
-  background-color: ${cores.coral};
+  color: ${colors.cream};
+  background-color: ${colors.coral};
   padding: 4px 6px;
   cursor: pointer;
 

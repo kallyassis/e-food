@@ -10,7 +10,6 @@ import {
 } from "./styles";
 import Tag from "../Tag";
 import { useNavigate } from "react-router-dom";
-import { Food } from "../../Pages/Home";
 
 const Produto = ({ avaliacao, capa, descricao, tipo, titulo, id }: Food) => {
   const navigate = useNavigate();
@@ -24,7 +23,7 @@ const Produto = ({ avaliacao, capa, descricao, tipo, titulo, id }: Food) => {
   return (
     <>
       <div className="container">
-        <Card key={id}>
+        <Card>
           <img src={capa} alt="" />
           <TextBox>
             <div>

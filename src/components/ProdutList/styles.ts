@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import { cores } from "../../styles";
+import { colors } from "../../styles";
 
 export const Container = styled.div`
   padding: 32px 0;
-  background-color: ${cores.creme};
+  background-color: ${colors.cream};
 `;
 
 export const List = styled.ul`
